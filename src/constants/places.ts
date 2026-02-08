@@ -1,6 +1,8 @@
 import { PLACES_IMAGES } from './images';
 
-export const VIEWPOINTS = [
+import type { PlaceType } from 'src/types';
+
+export const VIEWPOINTS: PlaceType[] = [
   {
     id: 'monte_brè',
     number: 1,
@@ -8,7 +10,12 @@ export const VIEWPOINTS = [
     description: `One of the most scenic viewpoints in Lugano with wide views over the lake and city.`,
     fact: 'Monte Brè is considered one of the sunniest places in Switzerland.',
     adress: 'Monte Brè, 6979 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0105,
+      longitude: 8.9854,
+    },
     image: PLACES_IMAGES.monte_bre,
+    isFavorite: false,
   },
   {
     id: 'monte_san_salvatore',
@@ -17,7 +24,12 @@ export const VIEWPOINTS = [
     description: 'A dramatic mountain offering breathtaking panoramic views.',
     fact: 'It is often called “the sugar loaf of Switzerland” because of its shape.',
     adress: 'Via delle Scuole 7, 6916 Lugano, Switzerland',
+    coordinates: {
+      latitude: 45.9774,
+      longitude: 8.9474,
+    },
     image: PLACES_IMAGES.monte_san_salvatore,
+    isFavorite: false,
   },
   {
     id: 'belvedere_gardens',
@@ -27,7 +39,12 @@ export const VIEWPOINTS = [
       'A peaceful terrace overlooking the lake, surrounded by greenery.',
     fact: 'The gardens were created as a quiet escape from the city.',
     adress: 'Viale Castagnola, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0062,
+      longitude: 8.9655,
+    },
     image: PLACES_IMAGES.belvedere_gardens,
+    isFavorite: false,
   },
   {
     id: 'castagnola_viewpoint',
@@ -37,7 +54,12 @@ export const VIEWPOINTS = [
       'A calm lakeside viewpoint with elegant villas and reflections on the water.',
     fact: 'The area has long attracted artists and writers.',
     adress: 'Riva Albertolli, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0037,
+      longitude: 8.9537,
+    },
     image: PLACES_IMAGES.castagnola_viewpoint,
+    isFavorite: false,
   },
   {
     id: 'parco_san_michele',
@@ -46,11 +68,16 @@ export const VIEWPOINTS = [
     description: 'A quiet park with elevated views above the city.',
     fact: 'It is mostly visited by locals at sunset.',
     adress: 'Via San Michele, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0046,
+      longitude: 8.9734,
+    },
     image: PLACES_IMAGES.parco_san_michele,
+    isFavorite: false,
   },
 ];
 
-export const OLDTOWN = [
+export const OLD_TOWN: PlaceType[] = [
   {
     id: 'piazza_della_riforma',
     number: 1,
@@ -59,7 +86,12 @@ export const OLDTOWN = [
       'The main square of Lugano, surrounded by cafés and historic buildings.',
     fact: 'Many city events and festivals take place here.',
     adress: 'Piazza della Riforma, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0039,
+      longitude: 8.9513,
+    },
     image: PLACES_IMAGES.piazza_della_riforma,
+    isFavorite: false,
   },
   {
     id: 'via_nassa',
@@ -68,7 +100,12 @@ export const OLDTOWN = [
     description: 'An elegant shopping street with historic arcades.',
     fact: 'It dates back to medieval times and was once used by fishermen.',
     adress: 'Via Nassa, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.002,
+      longitude: 8.9496,
+    },
     image: PLACES_IMAGES.via_nassa,
+    isFavorite: false,
   },
   {
     id: 'santa_maria_degli_angioli',
@@ -77,7 +114,12 @@ export const OLDTOWN = [
     description: 'A historic church famous for its Renaissance frescoes.',
     fact: 'Its fresco is considered one of the most important in Switzerland.',
     adress: 'Via Nassa 28, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0002,
+      longitude: 8.9492,
+    },
     image: PLACES_IMAGES.santa_maria_degli_angioli,
+    isFavorite: false,
   },
   {
     id: 'cathedral_of_saint_lawrence',
@@ -86,7 +128,12 @@ export const OLDTOWN = [
     description: 'The main cathedral of Lugano, overlooking the city.',
     fact: 'The cathedral was rebuilt in the 15th century.',
     adress: 'Piazza Luini 6, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0048,
+      longitude: 8.9488,
+    },
     image: PLACES_IMAGES.cathedral_of_saint_lawrence,
+    isFavorite: false,
   },
   {
     id: 'contrada_di_verla',
@@ -95,11 +142,16 @@ export const OLDTOWN = [
     description: 'A narrow historic street with authentic character.',
     fact: 'It preserves the original medieval layout of Lugano.',
     adress: 'Contrada di Verla, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0052,
+      longitude: 8.9518,
+    },
     image: PLACES_IMAGES.contrada_di_verla,
+    isFavorite: false,
   },
 ];
 
-export const LAKE_WATERFRONT = [
+export const LAKE_WATERFRONT: PlaceType[] = [
   {
     id: 'parco_ciani',
     number: 1,
@@ -107,7 +159,12 @@ export const LAKE_WATERFRONT = [
     description: 'A large lakeside park with open views and walking paths.',
     fact: 'It is one of the most photographed places in Lugano.',
     adress: 'Viale Carlo Cattaneo, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0057,
+      longitude: 8.9582,
+    },
     image: PLACES_IMAGES.parco_ciani,
+    isFavorite: false,
   },
   {
     id: 'lungolago',
@@ -116,7 +173,12 @@ export const LAKE_WATERFRONT = [
     description: 'The main waterfront promenade along the lake.',
     fact: 'It connects several key areas of the city.',
     adress: 'Riva Vincenzo Vela, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0027,
+      longitude: 8.9506,
+    },
     image: PLACES_IMAGES.lungolago,
+    isFavorite: false,
   },
   {
     id: 'belvedere_park',
@@ -125,7 +187,12 @@ export const LAKE_WATERFRONT = [
     description: 'A calm lakeside park with mountain views.',
     fact: 'The water often reflects the mountains on clear days.',
     adress: 'Viale Castagnola, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.006,
+      longitude: 8.9655,
+    },
     image: PLACES_IMAGES.belvedere_park,
+    isFavorite: false,
   },
   {
     id: 'cassina_dagno_lakeside',
@@ -134,7 +201,12 @@ export const LAKE_WATERFRONT = [
     description: 'A quieter lakeside area away from the city center.',
     fact: 'This spot is popular with locals rather than tourists.',
     adress: 'Via Al Lago, 6990 Cassina d’Agno, Switzerland',
+    coordinates: {
+      latitude: 45.9608,
+      longitude: 8.9016,
+    },
     image: PLACES_IMAGES.cassina_dagno_lakeside,
+    isFavorite: false,
   },
   {
     id: 'gandria_village_walk',
@@ -143,11 +215,16 @@ export const LAKE_WATERFRONT = [
     description: 'A scenic lakeside path leading to the village of Gandria.',
     fact: 'The path is carved into the rocks above the lake.',
     adress: 'Sentiero di Gandria, 6978 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0041,
+      longitude: 8.9939,
+    },
     image: PLACES_IMAGES.gandria_village_walk,
+    isFavorite: false,
   },
 ];
 
-export const CAFES_FOOD = [
+export const CAFES_FOOD: PlaceType[] = [
   {
     id: 'grand_cafe_al_porto',
     number: 1,
@@ -155,7 +232,12 @@ export const CAFES_FOOD = [
     description: 'A classic café near the waterfront with outdoor seating.',
     fact: 'It has been a local meeting place for decades.',
     adress: 'Via Pessina 14, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0043,
+      longitude: 8.9504,
+    },
     image: PLACES_IMAGES.grand_cafe_al_porto,
+    isFavorite: false,
   },
   {
     id: 'caffe_vanini',
@@ -164,7 +246,12 @@ export const CAFES_FOOD = [
     description: 'A historic café known for pastries and coffee.',
     fact: 'The café dates back to the 19th century.',
     adress: 'Piazza della Riforma 7, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0037,
+      longitude: 8.9512,
+    },
     image: PLACES_IMAGES.caffe_vanini,
+    isFavorite: false,
   },
   {
     id: 'ristorante_grand_cafe_lobby',
@@ -173,7 +260,12 @@ export const CAFES_FOOD = [
     description: 'An elegant restaurant for light meals and drinks.',
     fact: 'Its interior reflects classic Swiss hospitality style.',
     adress: 'Via Giocondo Albertolli 5, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0038,
+      longitude: 8.9547,
+    },
     image: PLACES_IMAGES.ristorante_grand_cafe_lobby,
+    isFavorite: false,
   },
   {
     id: 'spaghetti_store',
@@ -182,7 +274,12 @@ export const CAFES_FOOD = [
     description: 'A casual place serving simple Italian dishes.',
     fact: 'It is popular for quick lunches in the city center.',
     adress: 'Via Nassa 15, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0023,
+      longitude: 8.9498,
+    },
     image: PLACES_IMAGES.spaghetti_store,
+    isFavorite: false,
   },
   {
     id: 'manora_restaurant',
@@ -191,6 +288,11 @@ export const CAFES_FOOD = [
     description: 'A relaxed restaurant with panoramic city views.',
     fact: 'It offers one of the best dining views in Lugano.',
     adress: 'Via Pessina 16, 6900 Lugano, Switzerland',
+    coordinates: {
+      latitude: 46.0046,
+      longitude: 8.9507,
+    },
     image: PLACES_IMAGES.manora_restaurant,
+    isFavorite: false,
   },
 ];

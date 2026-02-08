@@ -1,4 +1,6 @@
-export const LUGANO_QUIZ = [
+import type { QuizType } from 'src/types';
+
+export const LUGANO_QUIZ: QuizType[] = [
   {
     id: 1,
     question: 'Which place offers one of the best panoramic views over Lugano?',
