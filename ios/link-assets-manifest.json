@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Akshar-Regular.ttf",
+      "sha1": "e65cada629e041a77bfd4c3ba1df6ac2e085554f"
+    },
+    {
+      "path": "src/assets/fonts/Akshar-SemiBold.ttf",
+      "sha1": "8b5aae745450d466ac144c7486ae88f0ddcad4fb"
+    },
+    {
+      "path": "src/assets/fonts/Akshar-Bold.ttf",
+      "sha1": "7c84d20c582b5200a5b83ffd578918eb60fdac82"
+    }
+  ]
+}
