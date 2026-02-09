@@ -1,12 +1,10 @@
 import type { SvgProps } from 'react-native-svg';
 
-import {
-  InfoIcon,
-  LocationIcon,
-  MapIcon,
-  QuizIcon,
-  SavedIcon,
-} from 'src/components';
+import InfoIcon from 'src/components/ui/CustomIcons/InfoIcon';
+import LocationIcon from 'src/components/ui/CustomIcons/LocationIcon';
+import MapIcon from 'src/components/ui/CustomIcons/MapIcon';
+import QuizIcon from 'src/components/ui/CustomIcons/QuizIcon';
+import SavedIcon from 'src/components/ui/CustomIcons/SavedIcon';
 
 export type IconComponent = React.ComponentType<SvgProps>;
 

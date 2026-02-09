@@ -31,6 +31,8 @@ export const COLORS = {
   green_overlay: 'rgba(34, 220, 115, 0.74)',
 
   dark_overlay: 'rgba(25, 48, 62, 0.66)',
+
+  facts_text: '#655C5C',
 };
 
 export const GRADIENT_MAP = {

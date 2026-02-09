@@ -1,17 +1,10 @@
 import { useState } from 'react';
-import { LayoutAnimation, Platform, UIManager, View } from 'react-native';
+import { View } from 'react-native';
 
 import CustomButton from '../CustomButton/CustomButton';
 import CustomText from '../CustomText/CustomText';
 
 import { styles } from './styles';
-
-if (
-  Platform.OS === 'android' &&
-  UIManager.setLayoutAnimationEnabledExperimental
-) {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
 
 interface SwipeButtonProps {
   onSwipeComplete: () => void;
@@ -23,15 +16,12 @@ const SwipeButton = ({ onSwipeComplete }: SwipeButtonProps) => {
   const handlePress = () => {
     if (isActive) return;
 
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-
     setIsActive(true);
 
     setTimeout(() => {
       onSwipeComplete();
 
       setTimeout(() => {
-        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setIsActive(false);
       }, 1000);
     }, 400);
