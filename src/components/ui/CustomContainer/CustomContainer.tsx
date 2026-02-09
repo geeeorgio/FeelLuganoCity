@@ -21,6 +21,9 @@ const CustomContainer = ({
   return (
     <LinearGradient
       colors={GRADIENT_MAP[variant]}
+      start={variant === 'liquid_gradient' ? { x: 0, y: 0.5 } : undefined}
+      end={variant === 'liquid_gradient' ? { x: 1, y: 0.5 } : undefined}
+      locations={variant === 'liquid_gradient' ? [0, 0.3, 0.7, 1] : undefined}
       style={[styles.default, styles[variant], extraStyle]}
     >
       {children}

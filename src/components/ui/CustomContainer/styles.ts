@@ -29,12 +29,7 @@ export const styles = StyleSheet.create({
     borderLeftColor: COLORS.red_gradient[0],
     borderRightColor: COLORS.red_gradient[1],
   },
-  liquid_gradient: {
-    borderTopColor: COLORS.yellow_gradient[0],
-    borderBottomColor: COLORS.yellow_gradient[0],
-    borderLeftColor: COLORS.yellow_gradient[0],
-    borderRightColor: COLORS.yellow_gradient[1],
-  },
+  liquid_gradient: {},
   yellow_gradient: {},
   border_gradient: {},
 });

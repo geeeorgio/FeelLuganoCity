@@ -1,4 +1,7 @@
 import { PLACES_IMAGES } from './images';
+import { CAFES_FOOD, LAKE_WATERFRONT, OLD_TOWN, VIEWPOINTS } from './places';
+
+import type { PlacesCategoriesMapType } from 'src/types';
 
 export const ONBOARD_TEXT = {
   onboarding1: {
@@ -23,27 +26,31 @@ export const ONBOARD_TEXT = {
   },
 };
 
-export const PLACES_CATEGORIES = {
+export const PLACES_CATEGORIES: PlacesCategoriesMapType = {
   Viewpoints: {
     name: 'Viewpoints',
     description:
       'Panoramic spots with beautiful views over Lugano and the lake.',
     image: PLACES_IMAGES.monte_bre,
+    places: VIEWPOINTS,
   },
-  Old_Town: {
+  'Old Town': {
     name: 'Old Town',
     description: 'Historic streets, squares, and traditional architecture.',
     image: PLACES_IMAGES.piazza_della_riforma,
+    places: OLD_TOWN,
   },
-  Lake_Waterfront: {
+  'Lake & Waterfront': {
     name: 'Lake & Waterfront',
     description: 'Relaxed walks and scenic spots along Lake Lugano.',
     image: PLACES_IMAGES.lungolago,
+    places: LAKE_WATERFRONT,
   },
-  Cafés_Food: {
+  'Cafés & Food': {
     name: 'Cafés & Food',
     description: 'Selected cafés and food places for a relaxed break.',
     image: PLACES_IMAGES.caffe_vanini,
+    places: CAFES_FOOD,
   },
 };
 

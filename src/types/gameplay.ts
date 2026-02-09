@@ -9,6 +9,18 @@ export const PLACES_IDS = [
 
 export type PlacesCategoriesKeysType = (typeof PLACES_IDS)[number];
 
+export type CategoryInfoType = {
+  name: string;
+  description: string;
+  image: ImageSourcePropType;
+  places: PlaceType[];
+};
+
+export type PlacesCategoriesMapType = Record<
+  PlacesCategoriesKeysType,
+  CategoryInfoType
+>;
+
 export type PlacesCategoriesType = Record<
   PlacesCategoriesKeysType,
   PlaceType[]

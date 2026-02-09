@@ -12,9 +12,10 @@ export const COLORS = {
   yellow_gradient: ['#FDF0B5', '#D0BB5A'],
   border_gradient: ['#0B465B', '#1D657A'],
   liquid_gradient: [
-    'rgba(255, 255, 255, 0.2)',
-    'rgba(255, 255, 255, 0.15)',
-    'rgba(255, 255, 255, 0.1)',
+    'rgba(255, 255, 255, 0.3)',
+    'rgba(255, 255, 255, 0.01)',
+    'rgba(255, 255, 255, 0.01)',
+    'rgba(255, 255, 255, 0.20)',
   ],
 
   red_like: '#C63737',
@@ -28,6 +29,8 @@ export const COLORS = {
   liquid_border: 'rgba(255, 255, 255, 0.5)',
 
   green_overlay: 'rgba(34, 220, 115, 0.74)',
+
+  dark_overlay: 'rgba(25, 48, 62, 0.66)',
 };
 
 export const GRADIENT_MAP = {
