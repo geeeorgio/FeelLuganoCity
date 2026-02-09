@@ -21,7 +21,7 @@ const CustomContainer = ({
   return (
     <LinearGradient
       colors={GRADIENT_MAP[variant]}
-      style={[styles.default, extraStyle]}
+      style={[styles.default, styles[variant], extraStyle]}
     >
       {children}
     </LinearGradient>

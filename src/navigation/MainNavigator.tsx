@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import { CustomTabBar } from 'src/components';
 import {
   HomeScreen,
   LocationsScreen,
@@ -20,7 +21,7 @@ const MainNavigator = () => {
           backgroundColor: 'transparent',
         },
       }}
-      // tabBar={(props) => <CustomTabBar {...props} />}
+      tabBar={(props) => <CustomTabBar {...props} />}
       initialRouteName="HomeScreen"
     >
       <MainStack.Screen name="HomeScreen" component={HomeScreen} />

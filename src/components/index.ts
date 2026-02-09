@@ -9,6 +9,8 @@ import MapIcon from './ui/CustomIcons/MapIcon';
 import QuizIcon from './ui/CustomIcons/QuizIcon';
 import SavedIcon from './ui/CustomIcons/SavedIcon';
 import ShareIcon from './ui/CustomIcons/ShareIcon';
+import CustomScreenWrapper from './ui/CustomScreenWrapper/CustomScreenWrapper';
+import CustomTabBar from './ui/CustomTabBar/CustomTabBar';
 import CustomText from './ui/CustomText/CustomText';
 
 export {
@@ -24,4 +26,6 @@ export {
   QuizIcon,
   SavedIcon,
   ShareIcon,
+  CustomTabBar,
+  CustomScreenWrapper,
 };

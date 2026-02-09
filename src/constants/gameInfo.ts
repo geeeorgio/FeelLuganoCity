@@ -56,5 +56,6 @@ export const QUIZ_MAIN_PAGE = {
 
 export const ABOUT = {
   title: 'About Lugano',
-  description: `Lugano is a place where Switzerland meets Italy. Italian is spoken here, coffee is enjoyed slowly, and life moves at a gentler pace than in most Swiss cities. \n Set on the shores of Lake Lugano and surrounded by green hills and palm trees — yes, palm trees in Switzerland — the city feels warm, open, and relaxed. It is often considered one of the sunniest cities in the country. \n\n Despite its size, Lugano has a vibrant cultural rhythm, with festivals, music, art, and charming squares made for long walks. It’s a city where you can wander through old streets, sit by the water, and simply enjoy the view of the mountains. Lugano doesn’t rush. And that might be its greatest charm.`,
+  description: `Lugano is a place where Switzerland meets Italy. Italian is spoken here, coffee is enjoyed slowly, and life moves at a gentler pace than in most Swiss cities. \nSet on the shores of Lake Lugano and surrounded by green hills and palm trees — yes, palm trees in Switzerland — the city feels warm, open, and relaxed. It is often considered one of the sunniest cities in the country. \n\nDespite its size, Lugano has a vibrant cultural rhythm, with festivals, music, art, and charming squares made for long walks. It’s a city where you can wander through old streets, sit by the water, and simply enjoy the view of the mountains. Lugano doesn’t rush. \nAnd that might be its greatest charm.`,
+  read_more_text: ' Read more...',
 };
