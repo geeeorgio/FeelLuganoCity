@@ -13,7 +13,8 @@ interface CustomButtonProps {
   variant?: 'default' | 'red_like';
   gradientVariant?: GradientVariant;
   onPress: () => void;
-  extraStyle?: StyleProp<ViewStyle>;
+  extraBtnStyle?: StyleProp<ViewStyle>;
+  extraContainerStyle?: StyleProp<ViewStyle>;
   disabled?: boolean;
   distance?: Insets;
 }
@@ -23,14 +24,15 @@ const CustomButton = ({
   variant = 'default',
   gradientVariant,
   onPress,
-  extraStyle,
+  extraBtnStyle,
+  extraContainerStyle,
   disabled = false,
   distance = { top: 10, bottom: 10, left: 10, right: 10 },
 }: CustomButtonProps) => {
   const Content = gradientVariant ? (
     <CustomContainer
       variant={gradientVariant}
-      extraStyle={[styles[gradientVariant], extraStyle]}
+      extraStyle={[styles[gradientVariant], extraContainerStyle]}
     >
       {children}
     </CustomContainer>
@@ -43,7 +45,7 @@ const CustomButton = ({
       style={({ pressed }) => [
         styles.default,
         !gradientVariant && styles[variant],
-        !gradientVariant && extraStyle,
+        extraBtnStyle,
         { opacity: pressed ? 0.7 : 1 },
       ]}
       disabled={disabled}
