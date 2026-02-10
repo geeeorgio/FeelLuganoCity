@@ -6,6 +6,7 @@ import LikeIcon from '../CustomIcons/LikeIcon';
 import MapIcon from '../CustomIcons/MapIcon';
 import ShareIcon from '../CustomIcons/ShareIcon';
 import CustomText from '../CustomText/CustomText';
+import MapComponent from '../MapComponent/MapComponent';
 
 import { styles } from './styles';
 
@@ -114,7 +115,11 @@ const SelectedItemDetails = ({ item }: SelectedItemDetailsProps) => {
         </View>
       )}
 
-      {/* {shouldShowMap && <MapCard />} */}
+      {shouldShowMap && (
+        <View style={styles.mapContainer}>
+          <MapComponent coordinates={item.coordinates} />
+        </View>
+      )}
     </View>
   );
 };

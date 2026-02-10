@@ -5,6 +5,7 @@ import CustomHeader from './ui/CustomHeader/CustomHeader';
 import CustomScreenWrapper from './ui/CustomScreenWrapper/CustomScreenWrapper';
 import CustomTabBar from './ui/CustomTabBar/CustomTabBar';
 import CustomText from './ui/CustomText/CustomText';
+import MapComponent from './ui/MapComponent/MapComponent';
 import SelectedCategoryList from './ui/SelectedCategoryList/SelectedCategoryList';
 import SelectedItemDetails from './ui/SelectedItemDetails/SelectedItemDetails';
 import SelectedListItem from './ui/SelectedListItem/SelectedListItem';
@@ -22,4 +23,5 @@ export {
   SelectedListItem,
   SelectedItemDetails,
   SwipeButton,
+  MapComponent,
 };

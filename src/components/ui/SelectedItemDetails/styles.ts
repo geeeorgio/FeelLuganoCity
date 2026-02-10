@@ -128,4 +128,10 @@ export const styles = StyleSheet.create({
     color: COLORS.facts_text,
     textAlign: 'center',
   },
+  mapContainer: {
+    width: '100%',
+    height: hp(200),
+    borderRadius: wp(16),
+    overflow: 'hidden',
+  },
 });
