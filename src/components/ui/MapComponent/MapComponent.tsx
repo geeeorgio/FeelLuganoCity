@@ -6,39 +6,80 @@ import MapIcon from '../CustomIcons/MapIcon';
 
 import { styles } from './styles';
 
-import { COLORS } from 'src/constants';
+import { COLORS, LUGANO_REGION, SINGLE_PLACE_DELTAS } from 'src/constants';
 import darkMapStyle from 'src/constants/darkMapStyle.json';
+import type { PlaceType } from 'src/types';
 import { hp, wp } from 'src/utils';
 
 interface MapComponentProps {
-  coordinates: {
+  allPlaces?: PlaceType[];
+  coordinates?: {
     latitude: number;
     longitude: number;
   };
+  onDetailPress?: (placeId: string) => void;
+  onMapPress?: () => void;
   title?: string;
   description?: string;
   fullScreen?: boolean;
   extraStyle?: StyleProp<ViewStyle>;
 }
 
-const MapComponent = (props: MapComponentProps) => {
+const MapComponent = ({
+  allPlaces,
+  coordinates,
+  fullScreen,
+  extraStyle,
+  onDetailPress,
+  onMapPress,
+}: MapComponentProps) => {
   return (
-    <View style={[styles.container, props.extraStyle]}>
+    <View
+      style={[styles.container, fullScreen && styles.fullScreen, extraStyle]}
+    >
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         customMapStyle={darkMapStyle}
         toolbarEnabled={false}
+        onPress={(e) => {
+          if (e.nativeEvent.action !== 'marker-press') {
+            onMapPress?.();
+          }
+        }}
         initialRegion={{
-          latitude: props.coordinates.latitude,
-          longitude: props.coordinates.longitude,
-          latitudeDelta: 0.01,
-          longitudeDelta: 0.01,
+          latitude: coordinates?.latitude || LUGANO_REGION.latitude,
+          longitude: coordinates?.longitude || LUGANO_REGION.longitude,
+          ...(allPlaces ? LUGANO_REGION : SINGLE_PLACE_DELTAS),
         }}
       >
-        <Marker coordinate={props.coordinates} title={props.title}>
-          <MapIcon color={COLORS.red_like} width={wp(33)} height={hp(35)} />
-        </Marker>
+        {!allPlaces && coordinates && (
+          <Marker coordinate={coordinates}>
+            <MapIcon
+              stroke={COLORS.black}
+              fill={COLORS.red_like}
+              width={wp(30)}
+              height={hp(35)}
+            />
+          </Marker>
+        )}
+
+        {allPlaces &&
+          allPlaces?.length > 0 &&
+          allPlaces.map((place) => (
+            <Marker
+              key={place.id}
+              coordinate={place.coordinates}
+              onPress={() => onDetailPress?.(place.id)}
+            >
+              <MapIcon
+                stroke={COLORS.black}
+                fill={COLORS.red_like}
+                width={wp(30)}
+                height={hp(35)}
+              />
+            </Marker>
+          ))}
       </MapView>
     </View>
   );

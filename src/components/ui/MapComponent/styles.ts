@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: hp(200),
-    borderRadius: wp(16),
+    borderRadius: wp(30),
     overflow: 'hidden',
   },
   fullScreen: {

@@ -1,3 +1,4 @@
+import { useRoute } from '@react-navigation/native';
 import { useState } from 'react';
 import { Image, ImageBackground, View } from 'react-native';
 
@@ -20,6 +21,8 @@ interface SelectedItemDetailsProps {
 }
 
 const SelectedItemDetails = ({ item }: SelectedItemDetailsProps) => {
+  const { name } = useRoute();
+
   const { toggleFavorite } = useGameContext();
   const [shouldShowMap, setShouldShowMaps] = useState(false);
   const [isFactBtnPressed, setIsFactBtnPressed] = useState(false);
@@ -62,6 +65,7 @@ const SelectedItemDetails = ({ item }: SelectedItemDetailsProps) => {
               onPress={handleMapsPress}
               extraBtnStyle={styles.openBtn}
               extraContainerStyle={styles.openBtnContainer}
+              disabled={name === 'MapScreen'}
             >
               <CustomText extraStyle={styles.actionBtnText}>
                 Open at maps
@@ -92,27 +96,35 @@ const SelectedItemDetails = ({ item }: SelectedItemDetailsProps) => {
         </View>
       </View>
 
-      <CustomButton
-        gradientVariant="liquid_gradient"
-        onPress={toggleFactBtnPress}
-        extraBtnStyle={styles.factsBtn}
-        extraContainerStyle={styles.factsBtnContainer}
-      >
-        <CustomText extraStyle={styles.factsBtnText}>{factBtnText}</CustomText>
-      </CustomButton>
-
-      {isFactBtnPressed && (
-        <View style={styles.noteFrameContainer}>
-          <ImageBackground
-            source={NOTE_FRAME}
-            resizeMode="cover"
-            style={styles.noteFrame}
+      {!shouldShowMap && (
+        <>
+          <CustomButton
+            gradientVariant="liquid_gradient"
+            onPress={toggleFactBtnPress}
+            extraBtnStyle={styles.factsBtn}
+            extraContainerStyle={styles.factsBtnContainer}
           >
-            <View style={styles.factsTextContainer}>
-              <CustomText extraStyle={styles.factsText}>{item.fact}</CustomText>
+            <CustomText extraStyle={styles.factsBtnText}>
+              {factBtnText}
+            </CustomText>
+          </CustomButton>
+
+          {isFactBtnPressed && (
+            <View style={styles.noteFrameContainer}>
+              <ImageBackground
+                source={NOTE_FRAME}
+                resizeMode="cover"
+                style={styles.noteFrame}
+              >
+                <View style={styles.factsTextContainer}>
+                  <CustomText extraStyle={styles.factsText}>
+                    {item.fact}
+                  </CustomText>
+                </View>
+              </ImageBackground>
             </View>
-          </ImageBackground>
-        </View>
+          )}
+        </>
       )}
 
       {shouldShowMap && (
