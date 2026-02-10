@@ -174,3 +174,6 @@ export const QUIZ_RESULTS = [
     right_btn_text: 'Start Again',
   },
 ];
+
+export const TOTAL_QUESTIONS = LUGANO_QUIZ.length;
+export const TIMER_SECONDS = 30;

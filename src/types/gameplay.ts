@@ -1,5 +1,7 @@
 import type { ImageSourcePropType } from 'react-native';
 
+export type QuizState = 'welcome' | 'playing' | 'results';
+
 export const PLACES_IDS = [
   'Viewpoints',
   'Old Town',
