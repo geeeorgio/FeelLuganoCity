@@ -6,7 +6,7 @@ import { hp, sp, wp } from 'src/utils';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: hp(170),
+    height: hp(155),
     borderRadius: wp(30),
     overflow: 'hidden',
     justifyContent: 'flex-end',
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     flex: 0.65,
   },
   title: {
-    fontSize: sp(16),
+    fontSize: sp(15),
   },
   swipeButton: {
     flex: 0.35,

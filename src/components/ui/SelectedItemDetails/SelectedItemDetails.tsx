@@ -10,6 +10,7 @@ import CustomText from '../CustomText/CustomText';
 import { styles } from './styles';
 
 import { COLORS, NOTE_FRAME } from 'src/constants';
+import { useGameContext } from 'src/hooks/useGameContext';
 import type { PlaceType } from 'src/types';
 import { handleShare } from 'src/utils';
 
@@ -18,6 +19,7 @@ interface SelectedItemDetailsProps {
 }
 
 const SelectedItemDetails = ({ item }: SelectedItemDetailsProps) => {
+  const { toggleFavorite } = useGameContext();
   const [shouldShowMap, setShouldShowMaps] = useState(false);
   const [isFactBtnPressed, setIsFactBtnPressed] = useState(false);
 
@@ -32,8 +34,6 @@ const SelectedItemDetails = ({ item }: SelectedItemDetailsProps) => {
   const handleMapsPress = () => {
     setShouldShowMaps(true);
   };
-
-  const handleLikePress = () => {};
 
   const toggleFactBtnPress = () => {
     setIsFactBtnPressed((prev) => !prev);
@@ -77,9 +77,12 @@ const SelectedItemDetails = ({ item }: SelectedItemDetailsProps) => {
               </CustomButton>
               <CustomButton
                 gradientVariant="liquid_gradient"
-                onPress={handleLikePress}
+                onPress={() => toggleFavorite(item.id)}
                 extraBtnStyle={styles.smallBtn}
-                extraContainerStyle={styles.smallBtnContainer}
+                extraContainerStyle={[
+                  styles.smallBtnContainer,
+                  item.isFavorite && styles.likeBtnActive,
+                ]}
               >
                 <LikeIcon color={COLORS.white} style={styles.icon} />
               </CustomButton>

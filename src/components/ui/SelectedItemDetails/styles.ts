@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   },
   imageContainer: {
     width: '100%',
-    height: hp(170),
+    height: hp(150),
     overflow: 'hidden',
   },
   image: {
@@ -24,14 +24,14 @@ export const styles = StyleSheet.create({
   },
   contentContainer: {
     width: '100%',
-    gap: hp(10),
+    gap: hp(8),
     paddingTop: wp(10),
     paddingHorizontal: wp(14),
-    paddingBottom: hp(20),
+    paddingBottom: hp(16),
     backgroundColor: COLORS.card_bckg,
   },
   description: {
-    fontSize: sp(15),
+    fontSize: sp(14),
   },
   cordsContainer: {
     flexDirection: 'row',
@@ -39,11 +39,11 @@ export const styles = StyleSheet.create({
     gap: wp(10),
   },
   adress: {
-    fontSize: sp(14),
+    fontSize: sp(12),
     fontFamily: FONTS.Regular,
   },
   actionBtnsContainer: {
-    marginTop: hp(10),
+    marginTop: hp(8),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -81,9 +81,12 @@ export const styles = StyleSheet.create({
     borderColor: COLORS.main_gradient[1],
     paddingVertical: hp(10),
   },
+  likeBtnActive: {
+    backgroundColor: COLORS.red_like,
+  },
   icon: {
-    width: wp(24),
-    height: hp(24),
+    width: wp(20),
+    height: hp(20),
   },
   factsBtn: {
     width: '100%',
@@ -93,17 +96,17 @@ export const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLORS.liquid_overlay,
+    backgroundColor: COLORS.btn_light_overlay,
     paddingVertical: hp(10),
   },
   factsBtnText: {
-    fontSize: sp(15),
+    fontSize: sp(14),
     fontFamily: FONTS.Bold,
   },
   noteFrameContainer: {
     alignSelf: 'center',
-    width: '70%',
-    height: hp(140),
+    width: '66%',
+    height: hp(120),
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
@@ -121,7 +124,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   factsText: {
-    fontSize: sp(15),
+    fontSize: sp(14),
     color: COLORS.facts_text,
     textAlign: 'center',
   },

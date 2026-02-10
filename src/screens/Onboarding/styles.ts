@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { FONTS } from 'src/constants';
+import { COLORS, FONTS } from 'src/constants';
 import { hp, sp, wp } from 'src/utils';
 
 export const styles = StyleSheet.create({
@@ -45,6 +45,7 @@ export const styles = StyleSheet.create({
     paddingVertical: hp(15),
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: COLORS.border_gradient[1],
   },
   btnText: {
     fontSize: sp(18),

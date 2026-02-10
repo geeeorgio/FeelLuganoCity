@@ -10,16 +10,23 @@ import {
   SelectedCategoryList,
   SelectedItemDetails,
 } from 'src/components';
-import type { CategoryInfoType, PlaceType } from 'src/types';
+import { useGameContext } from 'src/hooks/useGameContext';
+import type {
+  CategoryInfoType,
+  PlacesCategoriesKeysType,
+  PlaceType,
+} from 'src/types';
 
 const LocationsScreen = () => {
+  const { contextPlaces } = useGameContext();
+
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryInfoType | null>(null);
-  const [selectedPlace, setSelectedPlace] = useState<PlaceType | null>(null);
+  const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null);
 
-  const showCategoriesInfo = !selectedCategory && !selectedPlace;
-  const showSelectedList = selectedCategory && !selectedPlace;
-  const showSelectedPlace = selectedPlace;
+  const selectedContextPlaces = selectedCategory
+    ? contextPlaces[selectedCategory.name as PlacesCategoriesKeysType]
+    : [];
 
   const handleCategorySelect = (category: CategoryInfoType) => {
     setSelectedCategory(category);
@@ -31,15 +38,20 @@ const LocationsScreen = () => {
     }
   };
 
-  const handlePlaceBackPress = () => {
-    if (selectedPlace) {
-      setSelectedPlace(null);
-    }
+  const handleItemPress = (item: PlaceType) => {
+    setSelectedPlaceId(item.id);
   };
 
-  const handleItemPress = (item: PlaceType) => {
-    setSelectedPlace(item);
+  const handlePlaceBackPress = () => {
+    setSelectedPlaceId(null);
   };
+
+  const selectedPlace = !selectedPlaceId
+    ? null
+    : selectedContextPlaces.find((p) => p.id === selectedPlaceId) || null;
+
+  const showCategoriesInfo = !selectedCategory && !selectedPlace;
+  const showSelectedList = selectedCategory && !selectedPlace;
 
   return (
     <CustomScreenWrapper
@@ -55,7 +67,7 @@ const LocationsScreen = () => {
             onBackPress={handleCategoryBackPress}
           />
           <SelectedCategoryList
-            places={selectedCategory.places}
+            places={selectedContextPlaces}
             onItemPress={handleItemPress}
           />
         </View>
@@ -65,7 +77,7 @@ const LocationsScreen = () => {
         <CategoriesInfo onCategorySelect={handleCategorySelect} />
       )}
 
-      {showSelectedPlace && (
+      {selectedPlace && (
         <View style={styles.selectedPlaceContainer}>
           <CustomHeader
             title={selectedPlace.title}
