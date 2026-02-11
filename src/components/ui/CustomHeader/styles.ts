@@ -30,4 +30,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     fontSize: sp(20),
   },
+  quizTitle: {
+    fontSize: sp(14),
+  },
 });

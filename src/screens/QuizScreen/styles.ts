@@ -4,12 +4,14 @@ import { COLORS, FONTS } from 'src/constants';
 import { hp, sp, wp } from 'src/utils';
 
 export const styles = StyleSheet.create({
-  background: {
+  gameWrapper: {
     flex: 1,
+    paddingHorizontal: wp(16),
+    backgroundColor: COLORS.no_saved_container,
   },
   backButton: {
     width: wp(30),
-    height: wp(30),
+    height: hp(30),
     borderWidth: wp(1),
     borderColor: COLORS.white,
     borderRadius: wp(15),
@@ -17,74 +19,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   backIcon: {
-    width: wp(10),
-    height: hp(10),
+    width: wp(15),
+    height: hp(15),
   },
-
-  welcomeWrapper: {
-    flex: 1,
-    paddingTop: hp(10),
-  },
-  welcomeHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: wp(8),
-    paddingHorizontal: wp(16),
-    marginBottom: hp(8),
-  },
-  welcomeHeaderText: {
-    flex: 1,
-    fontSize: sp(13),
-    fontFamily: FONTS.Regular,
-  },
-  welcomeImageContainer: {
-    flex: 1,
-    width: '100%',
-  },
-  welcomeImage: {
-    width: '100%',
-    height: '100%',
-  },
-  welcomeCard: {
-    borderTopLeftRadius: wp(33),
-    borderTopRightRadius: wp(33),
-    paddingHorizontal: wp(50),
-    paddingTop: hp(20),
-    paddingBottom: hp(40),
-    gap: hp(10),
-    alignItems: 'center',
-  },
-  welcomeTitle: {
-    fontSize: sp(22),
-    fontFamily: FONTS.Bold,
-    textAlign: 'center',
-  },
-  welcomeDescription: {
-    fontSize: sp(14),
-    fontFamily: FONTS.Regular,
-    textAlign: 'center',
-  },
-  goButton: {
-    marginTop: hp(10),
-    width: '60%',
-  },
-  goButtonContainer: {
-    width: '100%',
-    paddingVertical: hp(15),
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: COLORS.border_gradient[1],
-  },
-  goButtonText: {
-    fontSize: sp(18),
-    fontFamily: FONTS.Bold,
-  },
-  gameWrapper: {
-    flex: 1,
-    paddingHorizontal: wp(16),
-    paddingTop: hp(8),
-  },
-
   gameHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -110,17 +47,21 @@ export const styles = StyleSheet.create({
   },
   scoreIndicator: {
     flexDirection: 'row',
+    justifyContent: 'space-around',
     alignItems: 'center',
     gap: wp(6),
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    backgroundColor: COLORS.liquid_overlay,
+    borderWidth: wp(1),
+    borderColor: COLORS.yellow_gradient[0],
+    width: wp(45),
     borderRadius: wp(12),
-    paddingHorizontal: wp(10),
-    paddingVertical: hp(3),
+    paddingHorizontal: wp(4),
+    paddingVertical: hp(2),
   },
   scoreDot: {
-    width: wp(10),
-    height: wp(10),
-    borderRadius: wp(5),
+    width: wp(14),
+    height: wp(14),
+    borderRadius: wp(8),
   },
   greenDot: {
     backgroundColor: COLORS.green,
@@ -131,15 +72,14 @@ export const styles = StyleSheet.create({
   scoreValue: {
     fontSize: sp(13),
     fontFamily: FONTS.Bold,
-    minWidth: wp(14),
     textAlign: 'center',
   },
   questionFrameContainer: {
     alignItems: 'center',
-    marginBottom: hp(12),
+    gap: hp(4),
   },
   questionFrame: {
-    width: wp(230),
+    width: wp(220),
     height: hp(150),
     justifyContent: 'center',
     alignItems: 'center',
@@ -148,42 +88,52 @@ export const styles = StyleSheet.create({
   },
   questionText: {
     fontSize: sp(14),
-    fontFamily: FONTS.Regular,
     textAlign: 'center',
-    color: COLORS.black,
+    color: COLORS.facts_text,
+  },
+  hintSlot: {
+    height: hp(90),
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: hp(20),
   },
   hintButton: {
-    alignSelf: 'center',
-    width: '50%',
-    marginBottom: hp(12),
+    justifyContent: 'center',
+    width: wp(220),
   },
   hintButtonContainer: {
     width: '100%',
-    paddingVertical: hp(12),
+    paddingHorizontal: wp(10),
+    paddingVertical: hp(16),
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: COLORS.btn_light_overlay,
+    borderRadius: wp(25),
   },
   hintButtonText: {
     fontSize: sp(16),
     fontFamily: FONTS.Bold,
   },
   hintContainer: {
-    backgroundColor: COLORS.dark_overlay,
-    borderRadius: wp(20),
+    width: wp(220),
+    justifyContent: 'center',
+    backgroundColor: COLORS.btn_light_overlay,
+    borderWidth: wp(1),
+    borderColor: COLORS.yellow_gradient[0],
+    borderRadius: wp(25),
     paddingHorizontal: wp(20),
-    paddingVertical: hp(14),
-    marginBottom: hp(12),
+    paddingVertical: hp(16),
   },
   hintText: {
     fontSize: sp(14),
-    fontFamily: FONTS.Regular,
     textAlign: 'center',
+    fontFamily: FONTS.Bold,
   },
   answersContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
+    width: '100%',
     gap: hp(10),
-    paddingBottom: hp(24),
+    paddingBottom: hp(80),
   },
   answerButton: {
     width: '100%',
@@ -196,61 +146,5 @@ export const styles = StyleSheet.create({
   },
   answerText: {
     fontSize: sp(15),
-    fontFamily: FONTS.SemiBold,
-  },
-  resultsWrapper: {
-    flex: 1,
-  },
-  resultsBackRow: {
-    paddingHorizontal: wp(16),
-    paddingTop: hp(8),
-    paddingBottom: hp(8),
-  },
-  resultsImageContainer: {
-    flex: 1,
-    width: '100%',
-  },
-  resultsImage: {
-    width: '100%',
-    height: '100%',
-  },
-  resultsCard: {
-    borderTopLeftRadius: wp(33),
-    borderTopRightRadius: wp(33),
-    paddingHorizontal: wp(24),
-    paddingTop: hp(20),
-    paddingBottom: hp(40),
-    gap: hp(8),
-  },
-  resultsScoreTitle: {
-    fontSize: sp(20),
-    fontFamily: FONTS.Bold,
-  },
-  resultsDescription: {
-    fontSize: sp(14),
-    fontFamily: FONTS.Regular,
-  },
-  resultsAdvice: {
-    fontSize: sp(14),
-    fontFamily: FONTS.Regular,
-  },
-  resultsButtonsRow: {
-    flexDirection: 'row',
-    gap: wp(16),
-    marginTop: hp(10),
-  },
-  resultsButton: {
-    flex: 1,
-  },
-  resultsButtonContainer: {
-    width: '100%',
-    paddingVertical: hp(12),
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: COLORS.border_gradient[1],
-  },
-  resultsButtonText: {
-    fontSize: sp(14),
-    fontFamily: FONTS.Bold,
   },
 });
