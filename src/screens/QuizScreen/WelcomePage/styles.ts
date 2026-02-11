@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
   },
   welcomeImageContainer: {
     alignSelf: 'center',
-    width: '90%',
+    width: '100%',
     height: hp(450),
     justifyContent: 'center',
     alignItems: 'center',

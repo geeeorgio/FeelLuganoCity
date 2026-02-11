@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
 import type { ImageSourcePropType } from 'react-native';
 
 import type { GradientVariant } from 'src/constants';
@@ -10,24 +10,122 @@ import {
   TIMER_SECONDS,
   TOTAL_QUESTIONS,
 } from 'src/constants';
-import type { QuizState, RootStackNavigationProp } from 'src/types';
+import type { QuizState, QuizType, RootStackNavigationProp } from 'src/types';
 import { shuffleArray } from 'src/utils';
+
+type QuizReducerState = {
+  quizState: QuizState;
+  currentIndex: number;
+  correctCount: number;
+  wrongCount: number;
+  timeLeft: number;
+  showHint: boolean;
+  selectedAnswer: string | null;
+  isAnswered: boolean;
+  shuffledQuestions: QuizType[];
+};
+
+type QuizAction =
+  | { type: 'START'; shuffledQuestions: QuizType[] }
+  | { type: 'ANSWER'; option: string }
+  | { type: 'SHOW_HINT' }
+  | { type: 'TICK' }
+  | { type: 'TIME_UP' }
+  | { type: 'NEXT_QUESTION' }
+  | { type: 'SHOW_RESULTS' }
+  | { type: 'RESET' };
+
+const initialQuizState: QuizReducerState = {
+  quizState: 'welcome',
+  currentIndex: 0,
+  correctCount: 0,
+  wrongCount: 0,
+  timeLeft: TIMER_SECONDS,
+  showHint: false,
+  selectedAnswer: null,
+  isAnswered: false,
+  shuffledQuestions: LUGANO_QUIZ,
+};
+
+function quizReducer(
+  state: QuizReducerState,
+  action: QuizAction,
+): QuizReducerState {
+  switch (action.type) {
+    case 'START':
+      return {
+        ...initialQuizState,
+        quizState: 'playing',
+        shuffledQuestions: action.shuffledQuestions,
+      };
+
+    case 'ANSWER': {
+      if (state.isAnswered) return state;
+      const isCorrect =
+        action.option ===
+        state.shuffledQuestions[state.currentIndex]?.correctValue;
+      return {
+        ...state,
+        selectedAnswer: action.option,
+        isAnswered: true,
+        correctCount: isCorrect ? state.correctCount + 1 : state.correctCount,
+        wrongCount: !isCorrect ? state.wrongCount + 1 : state.wrongCount,
+      };
+    }
+
+    case 'SHOW_HINT':
+      return { ...state, showHint: true };
+
+    case 'TICK':
+      return { ...state, timeLeft: Math.max(state.timeLeft - 1, 0) };
+
+    case 'TIME_UP':
+      if (state.isAnswered) return state;
+      return {
+        ...state,
+        isAnswered: true,
+        wrongCount: state.wrongCount + 1,
+      };
+
+    case 'NEXT_QUESTION':
+      return {
+        ...state,
+        currentIndex: state.currentIndex + 1,
+        timeLeft: TIMER_SECONDS,
+        showHint: false,
+        selectedAnswer: null,
+        isAnswered: false,
+      };
+
+    case 'SHOW_RESULTS':
+      return { ...state, quizState: 'results' };
+
+    case 'RESET':
+      return initialQuizState;
+
+    default:
+      return state;
+  }
+}
 
 export const useQuizLogic = () => {
   const navigation = useNavigation<RootStackNavigationProp>();
-
-  const [quizState, setQuizState] = useState<QuizState>('welcome');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [correctCount, setCorrectCount] = useState(0);
-  const [wrongCount, setWrongCount] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(TIMER_SECONDS);
-  const [showHint, setShowHint] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [isAnswered, setIsAnswered] = useState(false);
-  const [shuffledQuestions, setShuffledQuestions] = useState(LUGANO_QUIZ);
+  const [state, dispatch] = useReducer(quizReducer, initialQuizState);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const transitionRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const {
+    quizState,
+    currentIndex,
+    correctCount,
+    wrongCount,
+    timeLeft,
+    showHint,
+    selectedAnswer,
+    isAnswered,
+    shuffledQuestions,
+  } = state;
 
   const currentQuestion = shuffledQuestions[currentIndex];
 
@@ -47,7 +145,7 @@ export const useQuizLogic = () => {
     if (quizState !== 'playing' || isAnswered) return;
 
     timerRef.current = setInterval(() => {
-      setTimeLeft((prev) => Math.max(prev - 1, 0));
+      dispatch({ type: 'TICK' });
     }, 1000);
 
     return () => {
@@ -57,8 +155,7 @@ export const useQuizLogic = () => {
 
   useEffect(() => {
     if (timeLeft <= 0 && quizState === 'playing' && !isAnswered) {
-      setIsAnswered(true);
-      setWrongCount((prev) => prev + 1);
+      dispatch({ type: 'TIME_UP' });
     }
   }, [timeLeft, quizState, isAnswered]);
 
@@ -67,13 +164,9 @@ export const useQuizLogic = () => {
 
     transitionRef.current = setTimeout(() => {
       if (currentIndex + 1 >= TOTAL_QUESTIONS) {
-        setQuizState('results');
+        dispatch({ type: 'SHOW_RESULTS' });
       } else {
-        setCurrentIndex((prev) => prev + 1);
-        setTimeLeft(TIMER_SECONDS);
-        setShowHint(false);
-        setSelectedAnswer(null);
-        setIsAnswered(false);
+        dispatch({ type: 'NEXT_QUESTION' });
       }
     }, 1500);
 
@@ -82,90 +175,77 @@ export const useQuizLogic = () => {
     };
   }, [isAnswered, currentIndex, quizState]);
 
-  const handleStart = () => {
-    setShuffledQuestions(shuffleArray(LUGANO_QUIZ));
-    setQuizState('playing');
-    setCurrentIndex(0);
-    setCorrectCount(0);
-    setWrongCount(0);
-    setTimeLeft(TIMER_SECONDS);
-    setShowHint(false);
-    setSelectedAnswer(null);
-    setIsAnswered(false);
-  };
-
-  const handleAnswer = (option: string) => {
-    if (isAnswered) return;
-
-    setSelectedAnswer(option);
-    setIsAnswered(true);
-
-    if (option === currentQuestion.correctValue) {
-      setCorrectCount((prev) => prev + 1);
-    } else {
-      setWrongCount((prev) => prev + 1);
-    }
-  };
-
-  const handleHint = () => {
-    setShowHint(true);
-  };
-
-  const resetQuiz = () => {
+  const clearTimers = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
     if (transitionRef.current) clearTimeout(transitionRef.current);
-    setQuizState('welcome');
-    setCurrentIndex(0);
-    setCorrectCount(0);
-    setWrongCount(0);
-    setTimeLeft(TIMER_SECONDS);
-    setShowHint(false);
-    setSelectedAnswer(null);
-    setIsAnswered(false);
-  };
+  }, []);
 
-  const handleBack = () => {
+  const handleStart = useCallback(() => {
+    dispatch({
+      type: 'START',
+      shuffledQuestions: shuffleArray(LUGANO_QUIZ),
+    });
+  }, []);
+
+  const handleAnswer = useCallback((option: string) => {
+    dispatch({ type: 'ANSWER', option });
+  }, []);
+
+  const handleHint = useCallback(() => {
+    dispatch({ type: 'SHOW_HINT' });
+  }, []);
+
+  const resetQuiz = useCallback(() => {
+    clearTimers();
+    dispatch({ type: 'RESET' });
+  }, [clearTimers]);
+
+  const handleBack = useCallback(() => {
     if (quizState === 'playing') {
-      resetQuiz();
+      clearTimers();
+      dispatch({ type: 'RESET' });
     } else {
       navigation.goBack();
     }
-  };
+  }, [quizState, navigation, clearTimers]);
 
-  const handleStartExploring = () => {
+  const handleStartExploring = useCallback(() => {
     navigation.reset({
       index: 0,
       routes: [{ name: 'MainStack' }],
     });
-  };
+  }, [navigation]);
 
-  const getResultData = () => {
+  const getResultData = useCallback(() => {
     return (
       QUIZ_RESULTS.find(
         (r) => correctCount >= r.minScore && correctCount <= r.maxScore,
       ) || QUIZ_RESULTS[0]
     );
-  };
+  }, [correctCount]);
 
-  const getResultImage: () => ImageSourcePropType = () => {
+  const getResultImage = useCallback((): ImageSourcePropType => {
     if (correctCount <= 4) return GUIDE_IMAGES.quiz_failed;
     if (correctCount <= 8) return GUIDE_IMAGES.quiz_ok;
     return GUIDE_IMAGES.quiz_done;
-  };
+  }, [correctCount]);
 
-  const getOptionGradient = (option: string): GradientVariant => {
-    if (!isAnswered) return 'main_gradient';
+  const getOptionGradient = useCallback(
+    (option: string): GradientVariant => {
+      if (!isAnswered) return 'main_gradient';
 
-    if (option === currentQuestion.correctValue) {
-      return 'green_gradient';
-    }
+      if (option === currentQuestion?.correctValue) {
+        return 'green_gradient';
+      }
 
-    if (option === selectedAnswer) {
-      return 'red_gradient';
-    }
+      if (option === selectedAnswer) {
+        return 'red_gradient';
+      }
 
-    return 'main_gradient';
-  };
+      return 'main_gradient';
+    },
+    [isAnswered, currentQuestion, selectedAnswer],
+  );
 
   return {
     navigation,

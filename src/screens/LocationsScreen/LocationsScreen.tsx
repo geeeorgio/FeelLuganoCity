@@ -10,7 +10,7 @@ import {
   SelectedCategoryList,
   SelectedItemDetails,
 } from 'src/components';
-import { useGameContext } from 'src/hooks/useGameContext';
+import { useFavoritesContext } from 'src/hooks/useFavoritesContext';
 import type {
   CategoryInfoType,
   PlacesCategoriesKeysType,
@@ -18,7 +18,7 @@ import type {
 } from 'src/types';
 
 const LocationsScreen = () => {
-  const { contextPlaces } = useGameContext();
+  const { contextPlaces } = useFavoritesContext();
 
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryInfoType | null>(null);

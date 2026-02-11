@@ -10,11 +10,11 @@ import {
   SelectedCategoryList,
   SelectedItemDetails,
 } from 'src/components';
-import { useGameContext } from 'src/hooks/useGameContext';
+import { useFavoritesContext } from 'src/hooks/useFavoritesContext';
 import type { PlaceType } from 'src/types';
 
 const SavedScreen = () => {
-  const { contextPlaces } = useGameContext();
+  const { contextPlaces } = useFavoritesContext();
 
   const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null);
 

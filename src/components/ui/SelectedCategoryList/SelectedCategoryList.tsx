@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { FlatList, View } from 'react-native';
 
 import SelectedListItem from '../SelectedListItem/SelectedListItem';
@@ -11,17 +12,24 @@ interface SelectedCategoryListProps {
   onItemPress: (item: PlaceType) => void;
 }
 
+const keyExtractor = (item: PlaceType) => item.id;
+
 const SelectedCategoryList = ({
   places,
   onItemPress,
 }: SelectedCategoryListProps) => {
+  const renderItem = useCallback(
+    ({ item }: { item: PlaceType }) => (
+      <SelectedListItem item={item} onItemPress={onItemPress} />
+    ),
+    [onItemPress],
+  );
+
   return (
     <FlatList
       data={places}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item }) => (
-        <SelectedListItem item={item} onItemPress={onItemPress} />
-      )}
+      keyExtractor={keyExtractor}
+      renderItem={renderItem}
       showsVerticalScrollIndicator={false}
       style={styles.list}
       contentContainerStyle={styles.contentContainer}

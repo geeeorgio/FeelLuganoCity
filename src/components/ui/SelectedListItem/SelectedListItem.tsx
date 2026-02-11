@@ -1,3 +1,4 @@
+import React from 'react';
 import { ImageBackground, View } from 'react-native';
 
 import CustomText from '../CustomText/CustomText';
@@ -9,30 +10,32 @@ import type { PlaceType } from 'src/types';
 
 interface SelectedListItemProps {
   item: PlaceType;
-  onItemPress: (item: PlaceType) => void;
+  onItemPress: ((item: PlaceType) => void) | (() => void);
 }
 
-const SelectedListItem = ({ item, onItemPress }: SelectedListItemProps) => {
-  const handleSwipeComplete = () => {
-    onItemPress(item);
-  };
+const SelectedListItem = React.memo(
+  ({ item, onItemPress }: SelectedListItemProps) => {
+    const handleSwipeComplete = () => {
+      onItemPress(item);
+    };
 
-  return (
-    <ImageBackground
-      source={item.image}
-      style={styles.container}
-      resizeMode="cover"
-    >
-      <View style={styles.content}>
-        <View style={styles.titleContainer}>
-          <CustomText extraStyle={styles.title}>{item.title}</CustomText>
+    return (
+      <ImageBackground
+        source={item.image}
+        style={styles.container}
+        resizeMode="cover"
+      >
+        <View style={styles.content}>
+          <View style={styles.titleContainer}>
+            <CustomText extraStyle={styles.title}>{item.title}</CustomText>
+          </View>
+          <View style={styles.swipeButton}>
+            <SwipeButton onSwipeComplete={handleSwipeComplete} />
+          </View>
         </View>
-        <View style={styles.swipeButton}>
-          <SwipeButton onSwipeComplete={handleSwipeComplete} />
-        </View>
-      </View>
-    </ImageBackground>
-  );
-};
+      </ImageBackground>
+    );
+  },
+);
 
 export default SelectedListItem;

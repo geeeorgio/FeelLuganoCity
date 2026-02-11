@@ -1,4 +1,3 @@
-import { useRoute } from '@react-navigation/native';
 import { useState } from 'react';
 import { Image, ImageBackground, View } from 'react-native';
 
@@ -12,18 +11,20 @@ import MapComponent from '../MapComponent/MapComponent';
 import { styles } from './styles';
 
 import { COLORS, NOTE_FRAME } from 'src/constants';
-import { useGameContext } from 'src/hooks/useGameContext';
+import { useFavoritesContext } from 'src/hooks/useFavoritesContext';
 import type { PlaceType } from 'src/types';
 import { handleShare } from 'src/utils';
 
 interface SelectedItemDetailsProps {
   item: PlaceType;
+  disableMapButton?: boolean;
 }
 
-const SelectedItemDetails = ({ item }: SelectedItemDetailsProps) => {
-  const { name } = useRoute();
-
-  const { toggleFavorite } = useGameContext();
+const SelectedItemDetails = ({
+  item,
+  disableMapButton = false,
+}: SelectedItemDetailsProps) => {
+  const { toggleFavorite } = useFavoritesContext();
   const [shouldShowMap, setShouldShowMaps] = useState(false);
   const [isFactBtnPressed, setIsFactBtnPressed] = useState(false);
 
@@ -65,7 +66,7 @@ const SelectedItemDetails = ({ item }: SelectedItemDetailsProps) => {
               onPress={handleMapsPress}
               extraBtnStyle={styles.openBtn}
               extraContainerStyle={styles.openBtnContainer}
-              disabled={name === 'MapScreen'}
+              disabled={disableMapButton}
             >
               <CustomText extraStyle={styles.actionBtnText}>
                 Open at maps

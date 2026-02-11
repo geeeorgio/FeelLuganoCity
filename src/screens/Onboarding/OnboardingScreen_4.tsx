@@ -5,10 +5,10 @@ import { styles } from './styles';
 import { CustomButton, CustomContainer, CustomText } from 'src/components';
 import CustomScreenWrapper from 'src/components/ui/CustomScreenWrapper/CustomScreenWrapper';
 import { GUIDE_IMAGES, ONBOARD_TEXT } from 'src/constants';
-import { useGameContext } from 'src/hooks/useGameContext';
+import { useOnboardingContext } from 'src/hooks/useOnboardingContext';
 
 const OnboardingScreen_4 = () => {
-  const { setIsContextOnboardingDone } = useGameContext();
+  const { setIsContextOnboardingDone } = useOnboardingContext();
 
   const handleNext = () => {
     setIsContextOnboardingDone(true);

@@ -3,14 +3,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MainNavigator from './MainNavigator';
 import OnboardingNavigator from './OnboardingNavigator';
 
-import { useGameContext } from 'src/hooks/useGameContext';
+import { useOnboardingContext } from 'src/hooks/useOnboardingContext';
 import { QuizScreen } from 'src/screens';
 import type { RootStackParamList } from 'src/types';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
-  const { isContextOnboardingDone, isLoading } = useGameContext();
+  const { isContextOnboardingDone, isLoading } = useOnboardingContext();
 
   if (isLoading) {
     return null;

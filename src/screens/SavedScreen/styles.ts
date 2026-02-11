@@ -6,6 +6,7 @@ import { hp, sp, wp } from 'src/utils';
 export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: wp(16),
+    backgroundColor: COLORS.no_saved_container,
   },
   selectedCategoryContainer: {
     width: '100%',

@@ -130,6 +130,9 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: FONTS.Bold,
   },
+  scrollContent: {
+    flexGrow: 1,
+  },
   answersContainer: {
     width: '100%',
     gap: hp(10),

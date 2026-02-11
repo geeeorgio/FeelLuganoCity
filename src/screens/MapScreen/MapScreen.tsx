@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { ImageBackground, View } from 'react-native';
 
 import { styles } from './styles';
@@ -11,13 +11,15 @@ import {
   SelectedListItem,
 } from 'src/components';
 import { MAIN_BACKGROUND } from 'src/constants';
-import { useGameContext } from 'src/hooks/useGameContext';
+import { useFavoritesContext } from 'src/hooks/useFavoritesContext';
 
 const MapScreen = () => {
-  const { contextPlaces } = useGameContext();
+  const { contextPlaces } = useFavoritesContext();
   const [showSelectedPlace, setShowSelectedPlace] = useState(false);
   const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null);
   const [showDetailsInfo, setShowDetailsInfo] = useState(false);
+
+  const itemPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const allLocations = useMemo(() => {
     return Object.values(contextPlaces).flatMap((category) => category);
@@ -27,20 +29,25 @@ const MapScreen = () => {
     return allLocations.find((place) => place.id === selectedPlaceId) || null;
   }, [selectedPlaceId, allLocations]);
 
-  const handleMarkerPress = (id: string) => {
+  const handleMarkerPress = useCallback((id: string) => {
     setSelectedPlaceId(id);
     setShowSelectedPlace(true);
-  };
+  }, []);
 
-  const handleItemPress = () => {
-    setTimeout(() => {
+  const handleMapPress = useCallback(() => {
+    setShowSelectedPlace(false);
+  }, []);
+
+  const handleItemPress = useCallback(() => {
+    if (itemPressTimerRef.current) clearTimeout(itemPressTimerRef.current);
+    itemPressTimerRef.current = setTimeout(() => {
       setShowDetailsInfo(true);
     }, 100);
-  };
+  }, []);
 
-  const handleDetailsBackPress = () => {
+  const handleDetailsBackPress = useCallback(() => {
     setShowDetailsInfo(false);
-  };
+  }, []);
 
   return (
     <CustomScreenWrapper
@@ -51,7 +58,7 @@ const MapScreen = () => {
         allPlaces={allLocations}
         fullScreen
         onDetailPress={handleMarkerPress}
-        onMapPress={() => setShowSelectedPlace(false)}
+        onMapPress={handleMapPress}
       />
 
       {showSelectedPlace && selectedPlace && (
@@ -75,7 +82,7 @@ const MapScreen = () => {
               title={selectedPlace.title}
               onBackPress={handleDetailsBackPress}
             />
-            <SelectedItemDetails item={selectedPlace} />
+            <SelectedItemDetails item={selectedPlace} disableMapButton />
           </ImageBackground>
         </View>
       )}
