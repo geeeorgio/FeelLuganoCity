@@ -10,8 +10,12 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    gap: wp(6),
+    gap: wp(8),
     marginBottom: hp(10),
+  },
+  quizContainer: {
+    backgroundColor: COLORS.btn_dark_overlay,
+    borderRadius: wp(25),
   },
   backButton: {
     width: wp(30),
@@ -31,6 +35,6 @@ export const styles = StyleSheet.create({
     fontSize: sp(20),
   },
   quizTitle: {
-    fontSize: sp(14),
+    fontSize: sp(10),
   },
 });

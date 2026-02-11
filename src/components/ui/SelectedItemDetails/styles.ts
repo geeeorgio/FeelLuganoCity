@@ -25,9 +25,9 @@ export const styles = StyleSheet.create({
   contentContainer: {
     width: '100%',
     gap: hp(8),
-    paddingTop: wp(10),
-    paddingHorizontal: wp(14),
-    paddingBottom: hp(16),
+    paddingTop: hp(6),
+    paddingHorizontal: wp(12),
+    paddingBottom: hp(12),
     backgroundColor: COLORS.card_bckg,
   },
   description: {
@@ -36,14 +36,14 @@ export const styles = StyleSheet.create({
   cordsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: wp(10),
+    gap: wp(6),
   },
   adress: {
     fontSize: sp(12),
     fontFamily: FONTS.Regular,
   },
   actionBtnsContainer: {
-    marginTop: hp(8),
+    marginTop: hp(6),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -85,8 +85,8 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.red_like,
   },
   icon: {
-    width: wp(20),
-    height: hp(20),
+    width: wp(18),
+    height: hp(18),
   },
   factsBtn: {
     width: '100%',
@@ -124,7 +124,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   factsText: {
-    fontSize: sp(14),
+    fontSize: sp(12),
     color: COLORS.facts_text,
     textAlign: 'center',
   },

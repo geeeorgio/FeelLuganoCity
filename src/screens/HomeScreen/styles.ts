@@ -5,8 +5,8 @@ import { hp, sp, wp } from 'src/utils';
 
 export const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: wp(24),
-    paddingTop: hp(24),
+    paddingHorizontal: wp(16),
+    paddingTop: hp(20),
   },
   textContainer: {
     width: '100%',
@@ -21,11 +21,11 @@ export const styles = StyleSheet.create({
     fontSize: sp(20),
   },
   description: {
-    fontSize: sp(15),
+    fontSize: sp(14),
     fontFamily: FONTS.Regular,
   },
   readMoreText: {
-    fontSize: sp(15),
+    fontSize: sp(14),
     fontFamily: FONTS.Bold,
   },
 });

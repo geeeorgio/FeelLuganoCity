@@ -6,7 +6,7 @@ import { hp, sp, wp } from 'src/utils';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: hp(155),
+    height: hp(150),
     borderRadius: wp(30),
     overflow: 'hidden',
     justifyContent: 'flex-end',
@@ -16,15 +16,16 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: wp(14),
+    paddingVertical: wp(10),
+    paddingHorizontal: wp(16),
     gap: wp(10),
-    backgroundColor: COLORS.dark_overlay,
+    backgroundColor: COLORS.item_card_overlay,
   },
   titleContainer: {
     flex: 0.65,
   },
   title: {
-    fontSize: sp(15),
+    fontSize: sp(14),
   },
   swipeButton: {
     flex: 0.35,

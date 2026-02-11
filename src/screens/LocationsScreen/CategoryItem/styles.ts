@@ -6,7 +6,7 @@ import { hp, sp, wp } from 'src/utils';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: wp(14),
+    padding: wp(16),
     borderRadius: wp(30),
     backgroundColor: COLORS.dark_overlay,
     borderTopColor: COLORS.main_gradient[0],
@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
   },
   textContainer: {
     flex: 0.67,
-    marginRight: wp(10),
+    marginRight: wp(8),
     gap: hp(4),
   },
   name: {

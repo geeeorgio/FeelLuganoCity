@@ -34,7 +34,7 @@ const WelcomePage = ({ handleStart, navigation }: WelcomePageProps) => {
           <Image
             source={GUIDE_IMAGES.quiz_lady}
             style={styles.welcomeImage}
-            resizeMode="contain"
+            resizeMode="cover"
           />
         </View>
 

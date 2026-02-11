@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   },
   imgContainer: {
     width: '100%',
-    height: hp(525),
+    height: hp(475),
   },
   img: {
     width: '100%',
@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   btn: {
-    marginTop: hp(10),
+    marginTop: hp(20),
     width: '85%',
   },
   btnContainer: {

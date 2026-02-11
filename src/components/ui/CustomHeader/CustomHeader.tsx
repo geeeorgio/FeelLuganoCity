@@ -16,7 +16,7 @@ interface CustomHeaderProps {
 
 const CustomHeader = ({ title, onBackPress, quiz }: CustomHeaderProps) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, quiz && styles.quizContainer]}>
       <CustomButton onPress={onBackPress} extraBtnStyle={styles.backButton}>
         <BackIcon color={COLORS.white} style={styles.backIcon} />
       </CustomButton>

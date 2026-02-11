@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
 
 import { COLORS } from 'src/constants';
-import { wp } from 'src/utils';
+import { hp, wp } from 'src/utils';
 
 export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: wp(16),
+    paddingTop: hp(10),
   },
   selectedPlaceWrapper: {
     backgroundColor: COLORS.dark_overlay,

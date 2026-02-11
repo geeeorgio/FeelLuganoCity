@@ -35,6 +35,7 @@ export const COLORS = {
   facts_text: '#655C5C',
 
   no_saved_container: 'rgba(19,19,19,0.58)',
+  item_card_overlay: 'rgba(0, 0, 0, 0.6)',
 };
 
 export const GRADIENT_MAP = {

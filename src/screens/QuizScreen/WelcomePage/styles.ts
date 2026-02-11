@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   welcomeImageContainer: {
     alignSelf: 'center',
     width: '100%',
-    height: hp(450),
+    height: hp(355),
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -27,8 +27,8 @@ export const styles = StyleSheet.create({
     height: '100%',
   },
   welcomeCard: {
-    borderTopLeftRadius: wp(30),
-    borderTopRightRadius: wp(30),
+    borderTopLeftRadius: wp(33),
+    borderTopRightRadius: wp(33),
     paddingHorizontal: wp(33),
     paddingTop: hp(20),
     paddingBottom: hp(66),
@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
   },
   goButtonContainer: {
     width: '100%',
-    paddingVertical: hp(15),
+    paddingVertical: hp(12),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: COLORS.border_gradient[1],

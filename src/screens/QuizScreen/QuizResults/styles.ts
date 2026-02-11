@@ -22,13 +22,13 @@ export const styles = StyleSheet.create({
   resultsCard: {
     borderTopLeftRadius: wp(30),
     borderTopRightRadius: wp(30),
-    paddingHorizontal: wp(30),
+    paddingHorizontal: wp(16),
     paddingTop: hp(20),
     paddingBottom: hp(88),
   },
   resultsScoreTitle: {
-    fontSize: sp(20),
-    marginBottom: hp(10),
+    fontSize: sp(18),
+    marginBottom: hp(4),
   },
   resultsDescription: {
     fontSize: sp(14),
@@ -54,7 +54,7 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.btn_light_overlay,
   },
   resultsButtonText: {
-    fontSize: sp(14),
+    fontSize: sp(12),
     fontFamily: FONTS.Bold,
   },
 });

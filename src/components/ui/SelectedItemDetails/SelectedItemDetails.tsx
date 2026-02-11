@@ -37,6 +37,10 @@ const SelectedItemDetails = ({
   };
 
   const handleMapsPress = () => {
+    if (shouldShowMap) {
+      setShouldShowMaps(false);
+      return;
+    }
     setShouldShowMaps(true);
   };
 

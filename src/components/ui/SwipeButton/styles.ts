@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   text: {
     position: 'absolute',
     right: wp(12),
-    fontSize: sp(10),
+    fontSize: sp(8),
     fontFamily: FONTS.Regular,
   },
   thumbLeft: {

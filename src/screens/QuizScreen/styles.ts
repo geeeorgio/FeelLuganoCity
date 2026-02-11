@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: wp(16),
     backgroundColor: COLORS.no_saved_container,
+    paddingTop: hp(10),
   },
   backButton: {
     width: wp(30),
@@ -26,7 +27,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginBottom: hp(16),
+    marginBottom: hp(10),
   },
   headerLeft: {
     flexDirection: 'row',
@@ -38,12 +39,10 @@ export const styles = StyleSheet.create({
     gap: hp(4),
   },
   questionCounter: {
-    fontSize: sp(16),
-    fontFamily: FONTS.SemiBold,
+    fontSize: sp(14),
   },
   timerText: {
-    fontSize: sp(16),
-    fontFamily: FONTS.Bold,
+    fontSize: sp(14),
   },
   scoreIndicator: {
     flexDirection: 'row',
@@ -53,10 +52,9 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.liquid_overlay,
     borderWidth: wp(1),
     borderColor: COLORS.yellow_gradient[0],
-    width: wp(45),
+    width: wp(50),
     borderRadius: wp(12),
-    paddingHorizontal: wp(4),
-    paddingVertical: hp(2),
+    paddingHorizontal: wp(2),
   },
   scoreDot: {
     width: wp(14),
@@ -70,7 +68,7 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.red,
   },
   scoreValue: {
-    fontSize: sp(13),
+    fontSize: sp(12),
     fontFamily: FONTS.Bold,
     textAlign: 'center',
   },
@@ -87,12 +85,12 @@ export const styles = StyleSheet.create({
     paddingVertical: hp(20),
   },
   questionText: {
-    fontSize: sp(14),
+    fontSize: sp(12),
     textAlign: 'center',
     color: COLORS.facts_text,
   },
   hintSlot: {
-    height: hp(90),
+    height: hp(80),
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -122,11 +120,11 @@ export const styles = StyleSheet.create({
     borderWidth: wp(1),
     borderColor: COLORS.yellow_gradient[0],
     borderRadius: wp(25),
-    paddingHorizontal: wp(20),
-    paddingVertical: hp(16),
+    paddingHorizontal: wp(10),
+    paddingVertical: hp(20),
   },
   hintText: {
-    fontSize: sp(14),
+    fontSize: sp(11),
     textAlign: 'center',
     fontFamily: FONTS.Bold,
   },
@@ -143,11 +141,11 @@ export const styles = StyleSheet.create({
   },
   answerButtonContainer: {
     width: '100%',
-    paddingVertical: hp(16),
+    paddingVertical: hp(14),
     paddingHorizontal: wp(20),
     alignItems: 'flex-start',
   },
   answerText: {
-    fontSize: sp(15),
+    fontSize: sp(14),
   },
 });
